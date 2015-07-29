@@ -23,5 +23,6 @@ fun main(args: Array<String>) {
 
     for (filename in ns.getList<String>("file")) {
         println(filename)
+        FitFileParser.load(filename)
     }
 }
