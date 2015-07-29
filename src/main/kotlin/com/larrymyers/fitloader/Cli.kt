@@ -12,7 +12,6 @@ fun main(args: Array<String>) {
     parser.addArgument("file").nargs("*")
             .help("path to fit file")
 
-
     val ns: Namespace
 
     try {
