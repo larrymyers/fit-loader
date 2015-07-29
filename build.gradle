@@ -31,7 +31,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
-mainClassName = "com.larrymyers.fitloader.LoadFitFile"
+mainClassName = "com.larrymyers.fitloader.FitloaderPackage"
 
 jar {
     manifest {
