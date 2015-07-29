@@ -1,0 +1,52 @@
+version = "0.0.1"
+
+buildscript {
+    ext.kotlin_version = '0.12.1218'
+    ext.kotlin_version = "0.12.1218"
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+        classpath "com.github.jengelman.gradle.plugins:shadow:1.2.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: "application"
+apply plugin: 'kotlin'
+apply plugin: "kotlin"
+apply plugin: "com.github.johnrengelman.shadow"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "net.sourceforge.argparse4j:argparse4j:0.6.0"
+    compile files("lib/fit.jar")
+
+    testCompile "junit:junit:4.12"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+mainClassName = "com.larrymyers.fitloader.LoadFitFile"
+
+jar {
+    manifest {
+        attributes(
+            "Implementation-Title": "fit-loader",
+            "Implementation-Version": version
+        )
+    }
+}
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+test.testClassesDir = project.tasks.compileTestKotlin.destinationDir
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+}
